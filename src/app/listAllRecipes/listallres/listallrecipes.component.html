@@ -1,0 +1,11 @@
+     <div class="row">
+     <div class="col-xs-12">
+       <app-listrecipes-item
+        *ngFor="let item of recipes; let i= index"
+       [res]='item'
+       [index]="i"
+       [islog]='userlog'
+       ></app-listrecipes-item>
+
+     </div>
+   </div>

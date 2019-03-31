@@ -1,0 +1,77 @@
+
+<mat-card>
+
+<div class="row">
+
+  <div class="col-xs-12">
+    <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()" #f="ngForm">
+      <div class="row">
+        <div class="col-xs-12">
+          <button type="submit" class="btn btn-success"[disabled]='recipeForm.invalid'>Save</button>
+          <button type="button" class="btn btn-danger"(click)="onCancel()"><i class="material-icons">
+              cancel
+              </i>Cancel</button>
+        </div>
+      </div>
+      <div class="row">
+       <div class="col-xs-12">
+         <div class="form-group">
+           <label for="name">Name</label>
+           <input type="text"id="name"formControlName="name" placeholder="Name" class="form-control" >
+          </div>
+       </div>
+      </div>
+       <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="imgPath">Img Url</label>
+            <input type="text"
+             id="imgPath" formControlName="imgPath"
+              class="form-control" placeholder="Url"
+              #imageurl>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <img [src]="imageurl.value" class="img-responsive" >
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea type="text"id="description" placeholder="Description" formControlName="description"class="form-control"rows='6'></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12" formArrayName="ingredient">
+           <div class="row"
+           *ngFor="let ingredientCtrl of recipeForm.get('ingredient').controls; let i = index"
+           [formGroupName]="i"
+           style="margin-top: 10px;"
+           >
+             <div class="col-xs-6">
+              <input type="text"class="form-control"  placeholder="NameItem" formControlName="name">
+            </div>
+             <div class="col-xs-2">
+              <input type="number"class="form-control" placeholder="Amount" formControlName="amount">
+            </div>
+             <div class="col-xs-2">
+               <button class="btn btn-danger" (click)="DeletedIngredient(i)">X</button>
+             </div>
+           </div>
+           <hr>
+        <div class="row">
+         <div class="col-xs-12">
+          <button type="button" class="btn btn-success"(click)="OnAddIngredient()">Add Ingredient</button>
+       </div>
+       </div>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
+
+</mat-card>

@@ -1,0 +1,57 @@
+<mat-card>
+<div class="row">
+    <div class="col-xs-12">
+      <img src="{{rec?.imgPath}}" alt="{{rec?.name}}" class="img-responsive"style="...">
+    </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <h1>{{rec?.name}}</h1>
+  </div>
+</div>
+<div class="row">
+    <label for="description">Directions:</label>
+  <div class="col-xs-12" >
+     {{rec?.description}}
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+      <label for="ingredient">Ingredients:</label>
+      <div class="col-xs-12">
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let item of rec?.ingredient"
+         >
+           {{item?.name}} - {{item?.amount}}
+        </li>
+      </ul>
+  </div>
+  </div>
+<div class="row">
+<div class="col-xs-12">
+  <div  class="btn-group" appDropdown>
+<button type="button" class="btn-btn-primary dropdown-toggle">
+    <i class="material-icons">
+        settings
+        </i> Manage Recipe
+  <span class="create"></span>
+</button>
+<ul  class="dropdown-menu">
+    <li><a (click)="publishrec()" style="cursor: pointer;"><i class="material-icons">
+        publish
+        </i>Publish a Recipe</a></li>
+  <li><a (click)="onaddtoshoppinglist()" style="cursor: pointer;"><i class="material-icons">
+      add
+      </i> Add Groceries to ShoppingList</a></li>
+  <li><a  (click)="oneditrecipe()" style="cursor: pointer;"><i class="material-icons">
+      create
+      </i>Edit Recipe </a></li>
+  <li><a (click)="onDeleted()"style="cursor: pointer;"><i class="material-icons">
+      delete
+      </i>Delete Recipe</a></li>
+</ul>
+  </div>
+</div>
+</div>
+
+</mat-card>

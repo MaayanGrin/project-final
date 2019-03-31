@@ -1,0 +1,29 @@
+<mat-card>
+    <div class="row">
+        <div class="col-xs-12">
+          <img src="{{rec?.imgPath}}" alt="{{rec?.name}}" class="img-responsive"style="...">
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <h1>{{rec?.name}}</h1>
+      </div>
+    </div>
+    <div class="row">
+        <label for="description">Directions:</label>
+        <div class="col-xs-12">
+        {{rec?.description}}
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+        <ul class="list-group">
+            <label for="ingredient">Ingredients:</label>
+            <li class="list-group-item" *ngFor="let item of rec?.ingredient">
+             {{item?.name}} - {{item?.amount}}
+          </li>
+        </ul>
+    </div>
+    </div>
+</mat-card>
+
